@@ -4,8 +4,8 @@ import java.util.Arrays;
 public class longAddition {
 
 	public static void main(String[] args) {
-		int[] arr1 = {1,2,1};
-		int[] arr2 = {2,9,9};
+		int[] arr1 = {9,9,9};
+		int[] arr2 = {1,0,0};
 		System.out.println(Arrays.toString(sum(arr1, arr2)));
 		
 	}
@@ -25,7 +25,6 @@ public class longAddition {
 			} else {
 				sum[i] += (arr1[i] + arr2[i])%10;
 				if(sum[i] >= 10) {
-					System.out.println("in");
 					carry[i+1] += sum[i]/10;
 					sum[i] = (arr1[i] + arr2[i] + carry[i])%10;
 					sum[i+1] += carry[i+1];
@@ -34,7 +33,7 @@ public class longAddition {
 		}
 		
 //	Printing out the integer addition
-		System.out.println("The additioned arrays in interger are:");
+		System.out.println("The arrays in interger are:");
 		for(int k = arr1.length-1; k >= 0 ; k--) {
 			if(arr1[arr1.length-1] == 0 && arr1[k] == 0) {
 			System.out.print("");
@@ -61,7 +60,7 @@ public class longAddition {
 			}
 		}
 		System.out.println();
-		System.out.println("the associated array to that integer is:");
+		System.out.println("The associated array to that integer is:");
 		return sum;
 	}
 }
