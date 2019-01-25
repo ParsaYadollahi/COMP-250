@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class longAddition {
 
 	public static void main(String[] args) {
-		int[] arr1 = {9,9,9};
+		int[] arr1 = {9,9,9,1};
 		int[] arr2 = {1,0,0};
 		System.out.println(Arrays.toString(sum(arr1, arr2)));
 		
@@ -16,18 +16,44 @@ public class longAddition {
 		int[] carry = new int[arr1.length+1];
 		int[] sum = new int[arr1.length+1];
 		
-		for(int i = 0; i < arr1.length; i++) {
-			carry[i+1] = (arr1[i] + arr2[i])/10;
-			
-			if(carry[i+1] >= 1) {
-				sum[i+1] += carry[i+1];
-				sum[i] += (arr1[i] + arr2[i])%10;
-			} else {
-				sum[i] += (arr1[i] + arr2[i])%10;
-				if(sum[i] >= 10) {
-					carry[i+1] += sum[i]/10;
-					sum[i] = (arr1[i] + arr2[i] + carry[i])%10;
+		if(arr1.length >= arr2.length) {
+			int[] array2 = new int[arr1.length];
+			for(int m = 0; m < arr2.length; m++) {
+				array2[m] = arr2[m];
+			}
+			for(int i = 0; i < arr1.length; i++) {
+				carry[i+1] = (arr1[i] + array2[i])/10;
+				
+				if(carry[i+1] >= 1) {
 					sum[i+1] += carry[i+1];
+					sum[i] += (arr1[i] + array2[i])%10;
+				} else {
+					sum[i] += (arr1[i] + array2[i])%10;
+					if(sum[i] >= 10) {
+						carry[i+1] += sum[i]/10;
+						sum[i] = (arr1[i] + array2[i] + carry[i])%10;
+						sum[i+1] += carry[i+1];
+					}
+				}
+			}
+		} else {
+			int[] array1 = new int[arr2.length];
+			for(int n = 0; n < arr1.length; n++) {
+				array1[n] = arr1[n];
+			}
+			for(int i = 0; i < array1.length; i++) {
+				carry[i+1] = (array1[i] + arr2[i])/10;
+				
+				if(carry[i+1] >= 1) {
+					sum[i+1] += carry[i+1];
+					sum[i] += (array1[i] + arr2[i])%10;
+				} else {
+					sum[i] += (array1[i] + arr2[i])%10;
+					if(sum[i] >= 10) {
+						carry[i+1] += sum[i]/10;
+						sum[i] = (array1[i] + arr2[i] + carry[i])%10;
+						sum[i+1] += carry[i+1];
+					}
 				}
 			}
 		}
@@ -53,7 +79,7 @@ public class longAddition {
 		System.out.print(" = ");
 		
 		for(int j = sum.length-1; j >= 0 ; j--) {
-			if(sum[sum.length-1] == 0 && sum[j] == 0) {
+			if(sum[sum.length-1] == 0 && j == sum.length-1) {
 			System.out.print("");
 			} else {
 				System.out.print(sum[j]);
