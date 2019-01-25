@@ -1,2 +1,2 @@
 # COMP-250
-Intro to Computer Science (Winter 2019)
+My work for Intro to Computer Science course (Winter 2019)
