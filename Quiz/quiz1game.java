@@ -7,7 +7,7 @@ public class quiz1game {
 
 	public static void main(String[] args) {
 // the array of wins should be formated like this
-		String[] player1 = {"lose"};
+		String[] player1 = {"scissors", "scissors", "scissors"};
 		System.out.println(game(player1));
 
 	}
@@ -49,19 +49,19 @@ public class quiz1game {
 				return "rock";
 			} else if (paperP1/totalWins > rockP1/totalWins && paperP1/totalWins > scissorsP1/totalWins) {
 				return "paper";
-			} else if ((double) rockP1/totalWins == (double) paperP1/totalWins) {
+			} else if ((double) rockP1/totalWins == (double) paperP1/totalWins && rockP1 != 0) {
 				if (random.nextDouble() < 0.5) {
 					return "rock";
 				} else {
 					return "paper";
 				}
-			} else if ((double) paperP1/totalWins == (double) scissorsP1/totalWins) {
+			} else if ((double) paperP1/totalWins == (double) scissorsP1/totalWins && paperP1 != 0) {
 				if (random.nextDouble() < 0.5) {
 					return "paper";
 				} else {
 					return "scissors";
 				}
-			} else if ((double) scissorsP1/totalWins == (double) rockP1/totalWins) {
+			} else if ((double) scissorsP1/totalWins == (double) rockP1/totalWins && scissorsP1 !=0) {
 				if (random.nextDouble() < 0.5) {
 					return "scissors";
 				} else {
