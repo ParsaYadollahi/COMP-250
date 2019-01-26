@@ -4,8 +4,8 @@ import java.util.Arrays;
 public class longAddition {
 
 	public static void main(String[] args) {
-		int[] arr1 = {9,9,9,1};
-		int[] arr2 = {1,0,0};
+		int[] arr1 = {9,9,9,1,1};
+		int[] arr2 = {1,0,0,1};
 		System.out.println(Arrays.toString(sum(arr1, arr2)));
 		
 	}
@@ -37,11 +37,13 @@ public class longAddition {
 				}
 			}
 		} else {
+			carry = new int[arr2.length+1];
+			sum = new int[arr2.length+1];
 			int[] array1 = new int[arr2.length];
 			for(int n = 0; n < arr1.length; n++) {
 				array1[n] = arr1[n];
 			}
-			for(int i = 0; i < array1.length; i++) {
+			for(int i = 0; i < arr2.length; i++) {
 				carry[i+1] = (array1[i] + arr2[i])/10;
 				
 				if(carry[i+1] >= 1) {
