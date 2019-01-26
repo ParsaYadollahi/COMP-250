@@ -86,7 +86,7 @@ public class longAddition {
 			}
 		}
 		System.out.println();
-		System.out.println("The associated array to that integer is:");
+		System.out.println("The associated array of that integer is:");
 		return sum;
 	}
 }
