@@ -1,6 +1,6 @@
 package Lecture4;
 
-// A program that calculates fibonacci number
+// A program that calculates fibonacci number (itterative)
 public class FibonacciSeq {
 
 	public static void main(String[] args) {
@@ -15,7 +15,7 @@ public static double fibonacci(int x) {
 			sequence[0] = 1;
 			sequence[1] = 1;
 			for(int i = 2; i <= x; i++) {
-				sequence[i] = sequence[i-1] + sequence[i-2]; 	
+				sequence[i] = sequence[i-1] + sequence[i-2];
 			}
 		}
 		return sequence[sequence.length-1];
