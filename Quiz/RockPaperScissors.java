@@ -3,22 +3,22 @@ package Quiz;
 
 import java.util.Random;
 
-public class quiz1game {
+public class RockPaperScissors {
 
 	public static void main(String[] args) {
 // the array of wins should be formated like this
-		String[] player1 = {"scissors", "scissors", "scissors"};
+		String[] player1 = {"paper", "scissors", "scissors"};
 		System.out.println(game(player1));
 
 	}
 	public static String game(String[] p1) {
+		assert p1.length != 0;
 		int rockP1 = 0;
 		int paperP1 = 0;
 		int scissorsP1 = 0;
-		int totalWins = 0;
 		int arrayWins = 0;
 		Random random = new Random();
-//	Make sure even if there only loses, program dont crash
+//	Make sure even if there only loses, program don't crash
 		for(int index = 0; index < p1.length; index++) {
 			if(p1[index].equalsIgnoreCase("rock") || p1[index].equalsIgnoreCase("paper") || p1[index].equalsIgnoreCase("scissors")) {
 				arrayWins++;
@@ -43,25 +43,24 @@ public class quiz1game {
 					scissorsP1++;
 				}
 			}
-			totalWins = (rockP1 + paperP1 + scissorsP1);
 // Evaluating the best option with the ratio
-			if (rockP1/totalWins > paperP1/totalWins && rockP1/totalWins > scissorsP1/totalWins) {
+			if (rockP1  > paperP1  && rockP1  > scissorsP1 ) {
 				return "rock";
-			} else if (paperP1/totalWins > rockP1/totalWins && paperP1/totalWins > scissorsP1/totalWins) {
+			} else if (paperP1  > rockP1  && paperP1  > scissorsP1 ) {
 				return "paper";
-			} else if ((double) rockP1/totalWins == (double) paperP1/totalWins && rockP1 != 0) {
+			} else if ( rockP1  == paperP1  && rockP1 != 0) {
 				if (random.nextDouble() < 0.5) {
 					return "rock";
 				} else {
 					return "paper";
 				}
-			} else if ((double) paperP1/totalWins == (double) scissorsP1/totalWins && paperP1 != 0) {
+			} else if ( paperP1  ==  scissorsP1  && paperP1 != 0) {
 				if (random.nextDouble() < 0.5) {
 					return "paper";
 				} else {
 					return "scissors";
 				}
-			} else if ((double) scissorsP1/totalWins == (double) rockP1/totalWins && scissorsP1 !=0) {
+			} else if ( scissorsP1  ==  rockP1  && scissorsP1 !=0) {
 				if (random.nextDouble() < 0.5) {
 					return "scissors";
 				} else {
