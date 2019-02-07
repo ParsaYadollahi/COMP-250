@@ -6,11 +6,10 @@ public class mergesort {
 
 	public static void main(String[] args) {
 		int[] a = {1,2,3};
-		int[] b = {4,5,6,7};
-		int pkey = 4;
-		System.out.println((mergeSorted(a,b, pkey)));
+		int[] b = {4,2,6,3};
+		System.out.println("There are/is " + (mergeSorted(a,b) + " element(s) in common in the two arrays"));
 	}
-	public static boolean mergeSorted(int[] a, int[] b, int pkey) {
+	public static int mergeSorted(int[] a, int[] b) {
 		int mergedlength = a.length + b.length;
 		int[] merged = new int[mergedlength];
 		for( int i = 0; i < a.length; i++) {
@@ -20,12 +19,17 @@ public class mergesort {
 					merged[a.length + j] = b[j];
 		}
 		Arrays.sort(merged);
-		for(int k = 0; k < merged.length; k++) {
-			if(merged[k] == pkey) {
-				return true;
+		int sum = 0;
+		int pointer = 0;
+		while( pointer < merged.length-1) {
+			if (merged[pointer] == merged[pointer+1]) {
+				sum++;
+				pointer += 2;
+			} else {
+				pointer++;
 			}
 		}
-		return false;
+		return sum;
 	}
 
 }
