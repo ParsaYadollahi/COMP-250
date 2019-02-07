@@ -1,4 +1,9 @@
+
 package Lecture5;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 public class iterativebinarysearch {
 
@@ -12,10 +17,10 @@ public class iterativebinarysearch {
 		int left = 0;
 		int right = arr.length;
 		while(right > left+1) {
-// splitting arr in 2
+// splitting array in 2
 			int middle = (int) Math.ceil((right+left)/2);
 // determining if in first or second half
-			if(arr[middle]> pkey) {
+			if(arr[middle] > pkey) {
 				right = middle;
 			} else {
 				left = middle;
@@ -27,6 +32,10 @@ public class iterativebinarysearch {
 		} else {
 			return false;
 		}
+	}
+	@Test
+	public void testBinarySearch() {
+		assertTrue(binarySearch(new int[] {1,4,8,10}, 8));
 	}
 
 }
