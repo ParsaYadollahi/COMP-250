@@ -1,3 +1,4 @@
+package Arrays;
 // Program that reverses a String by its words
 public class reverseString {
 

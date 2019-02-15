@@ -1,3 +1,4 @@
+package Arrays;
 public class InterestRate {
 
 	public static void main(String[] args) {
