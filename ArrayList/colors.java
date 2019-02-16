@@ -1,6 +1,7 @@
 package ArrayList;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class colors {
 
@@ -12,8 +13,13 @@ public class colors {
 		colors.add("grey");
 		colors.add("black");
 		colors.add("light");
-		System.out.println(colors.size());
-		System.out.println(colors);
+		
+		Iterator<String> iterating = colors.iterator();
+		while(iterating.hasNext())
+		{
+			String color = iterating.next();
+			System.out.print(color + " ");
+		}
 	}
 
 }
