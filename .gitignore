@@ -1,3 +1,7 @@
 .project
 .classpath
 *.class
+
+out/
+.idea/
+.metadata/
