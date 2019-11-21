@@ -1,4 +1,5 @@
 package A3;
+// Contributors: Alone
 
 public class BellmanFord{
 
@@ -92,17 +93,11 @@ public class BellmanFord{
             }
         }
     }
-    public void relax(int src, int destination, int weight) {
+    private void relax(int src, int destination, int weight) {
         if (destination != this.source) { // check if its the source is destination
             if (distances[src] + weight < distances[destination]) { // condition to relax
                 distances[destination] = distances[src] + weight;
                 predecessors[destination] = src; // set the pred to the source
-            }
-        } else {
-
-            if (distances[src] < distances[destination] - weight){
-                distances[src] = distances[destination] - weight;
-                predecessors[destination] = src;
             }
         }
     }
@@ -160,7 +155,7 @@ public class BellmanFord{
 
     public static void main(String[] args){
 
-        String file = "/home/parsa/git/COMP-250-251/Assignment3/src/A3/bf4.txt";
+        String file = args[0];
         WGraph g = new WGraph(file);
         try{
             BellmanFord bf = new BellmanFord(g, g.getSource());
