@@ -75,7 +75,7 @@ public class Multiply{
             f = temp2[0];
             g = temp3[0];
 
-            result[0] = power_2m * e + (power_2 * (e + f - qg) + f);
+            result[0] = power_2m * e + (power_2 * (e + f - g) + f);
             result[1] = 6*m+temp1[1] + temp2[1] + temp3[1];
 
 
