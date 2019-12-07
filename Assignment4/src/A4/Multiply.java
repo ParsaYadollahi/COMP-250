@@ -57,12 +57,15 @@ public class Multiply{
             return result;
         } else {
             m = (int) Math.floor(size / 2.0); // cut size by half
+
             int power_2 = (int) (Math.pow(2, m)); // move bits by m/2
             int power_2m =   (int) (Math.pow(2, 2*m)); // move bits by m
+
             a = (int) Math.floor(x / power_2);
             c = (int) Math.floor(y / power_2);
             b = x % power_2;
             d = y % power_2;
+
             int[] temp1 = karatsuba(m, a, c); // ac
             int[] temp2 = karatsuba(m, b,d); // bd
             int[] temp3 = karatsuba(m, (a-b), (c-d)); // +(a-b) + (c-d)
@@ -72,7 +75,7 @@ public class Multiply{
             f = temp2[0];
             g = temp3[0];
 
-            result[0] = power_2m*e + (power_2*(e+f-g) + f);
+            result[0] = power_2m * e + (power_2 * (e + f - qg) + f);
             result[1] = 6*m+temp1[1] + temp2[1] + temp3[1];
 
 
