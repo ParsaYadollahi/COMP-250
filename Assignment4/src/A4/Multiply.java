@@ -2,6 +2,16 @@ package A4;
 import java.util.*;
 import java.io.*;
 
+/****************************
+ *
+ * COMP251 template file
+ *
+ * Assignment 4
+ * Parsa Yadollahi - 260869949
+ * No collaborators
+ *
+ *****************************/
+
 public class Multiply{
 
     private static int randomInt(int size) {
@@ -39,7 +49,7 @@ public class Multiply{
             h = temp4[0];
 
             result[0] = power_2m*e + power_2*(g+h)+f;
-            result[1] = 3*m + temp1[1] + temp2[1] + temp2[1] + temp3[1] + temp4[1];
+            result[1] = 3*m + temp1[1] + temp2[1] + temp2[1] + temp3[1] + temp4[1]; // return
 
         }
         return result;
@@ -48,32 +58,34 @@ public class Multiply{
     public static int[] karatsuba(int size, int x, int y) {
 
         // YOUR CODE GOES HERE  (Note: Change return statement)
-        int m, a, b, c, d, e, f, g = 0;
         int result[] = new int[2];
+        int pow = (int) (Math.pow(2.0, size));
+        x = x % pow; // Check for base case
+        y = y % pow; // Check the base case
 
         if (size == 1){ // Base case
             result[0] = x*y;
             result[1] = 1;
             return result;
         } else {
-            m = (int) Math.floor(size / 2.0); // cut size by half
+            int m = (int) Math.ceil(size / 2.0); // cut size by half
 
             int power_2 = (int) (Math.pow(2, m)); // move bits by m/2
             int power_2m =   (int) (Math.pow(2, 2*m)); // move bits by m
 
-            a = (int) Math.floor(x / power_2);
-            c = (int) Math.floor(y / power_2);
-            b = x % power_2;
-            d = y % power_2;
+            int a = (int) Math.floor(x / power_2);
+            int c = (int) Math.floor(y / power_2);
+            int b = x % power_2;
+            int d = y % power_2;
 
             int[] temp1 = karatsuba(m, a, c); // ac
             int[] temp2 = karatsuba(m, b,d); // bd
             int[] temp3 = karatsuba(m, (a-b), (c-d)); // +(a-b) + (c-d)
 
             // store results
-            e = temp1[0];
-            f = temp2[0];
-            g = temp3[0];
+            int e = temp1[0];
+            int f = temp2[0];
+            int g = temp3[0];
 
             result[0] = power_2m * e + (power_2 * (e + f - g) + f);
             result[1] = 6*m+temp1[1] + temp2[1] + temp3[1];

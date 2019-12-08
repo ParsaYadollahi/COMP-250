@@ -9,6 +9,8 @@ import java.util.Random;
  * COMP251 template file
  *
  * Assignment 4
+ * Parsa Yadollahi - 260869949
+ * No collaborators
  *
  *****************************/
 
@@ -34,23 +36,31 @@ public class GlobalMinCut {
 
         // TODO: Initialize S(v) = {v} for each v
         for (Character c: graph.getNodes()) {
-
+            ArrayList<Character> nodes = new ArrayList<>(); // Create a new arraylist of nodes
+            nodes.add(c); // add the character into the list
+            S.put(c, nodes); // Put the char and itself as list into the set
         }
 
-
-
-        
         while (graph.getNbNodes() > 2) {
 
             // select an edge randomly (DO NOT CHANGE THIS LINE)
             Edge edge = graph.getEdge(random.nextInt(graph.getNbEdges()));
 
             // TODO: fill in the rest
+            char u = edge.node_1;
+            char v = edge.node_2;
 
+            graph.contractEdge(edge);
+
+            S.get(v).addAll(S.get(u));
+            S.remove(u);
         }
         
         // TODO: assemble the output object
 
+        for (Character k: S.keySet()) { // Iterate through the map
+            cut.add(S.get(k)); // add the two sets to the cut
+        }
         return cut;
     }
 
@@ -72,6 +82,7 @@ public class GlobalMinCut {
         do  {
             
 			// TODO: use global_min_cut()
+            cut = global_min_cut(new Graph(graph)); // Add a new graph to the min cut
             
 
             ++ count;

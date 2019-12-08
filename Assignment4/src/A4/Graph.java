@@ -7,6 +7,8 @@ import java.util.*;
  * COMP251 template file
  *
  * Assignment 4
+ * Parsa Yadollahi - 260869949
+ * No collaborators
  *
  *****************************/
 
@@ -81,13 +83,20 @@ public class Graph {
         char v = edge_to_contract.node_2;
 
         // TODO: implement me
-        for (Edge e : getEdges()) {
-            if (e.node_2 != e.node_1) {
-                if (e.node_1 == u && e.node_2 == v) {
-                    e.node_2 = e.node_1;
-                } else if (e.node_1 == v && e.node_2 == u) {
-                    e.node_1 = e.node_2;
-                }
+        Iterator<Edge> iterator = this.getEdges().iterator(); // Create iterator through the edges
+        while(iterator.hasNext()) { // loop thru each edge
+            Edge e = iterator.next();
+
+            if ((e.node_1 == u && e.node_2 == v) || (e.node_1 == v && e.node_2 == u)) { // if destination = loop the edge
+                iterator.remove(); // remove the edge from the ArrayList
+
+            } else if ((e.node_1 == u && e.node_2 == u) || (e.node_1 == v && e.node_2 == v)){ // remove self loops
+                iterator.remove(); // If Self loop, remove the edge
+            }
+            if (e.node_1 == u) { // Make v = u
+                e.node_1 = v;
+            } else if (e.node_2 == u) {
+                e.node_2 = v;
             }
         }
         removeNode(u);

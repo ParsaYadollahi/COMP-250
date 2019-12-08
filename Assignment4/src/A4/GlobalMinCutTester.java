@@ -9,7 +9,7 @@ public class GlobalMinCutTester {
 
     public static void main(String[] args) {
 
-        String filename = "/home/parsa/dev/COMP-250-251/Assignment4/src/A4/network_1.txt";
+        String filename = "/Users/parsa/dev/COMP-250-251/Assignment4/src/A4/network_2.txt";
         System.out.println("Testing graph " + filename);
         Graph graph = new Graph(filename);
         System.out.println(graph);
